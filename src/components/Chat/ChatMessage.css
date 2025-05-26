@@ -1,0 +1,53 @@
+/* src/components/Chat/ChatMessage.css */
+.chat-message {
+  display: flex;
+  margin-bottom: 10px;
+  max-width: 75%; /* Max width of a message bubble */
+}
+
+.message-bubble {
+  padding: 10px 15px;
+  border-radius: 18px;
+  word-wrap: break-word; /* Break long words */
+  position: relative;
+}
+
+.message-text {
+  margin: 0 0 5px 0; /* Space for timestamp */
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.message-timestamp {
+  font-size: 0.7rem;
+  color: #888;
+  display: block; /* Puts it on a new line or use text-align for inline */
+  text-align: right; /* Aligns timestamp to the right of the bubble */
+}
+
+/* Sent messages */
+.chat-message.sent {
+  margin-left: auto; /* Align to the right */
+  flex-direction: row-reverse; /* Bubble appears on the right */
+}
+.chat-message.sent .message-bubble {
+  background-color: #007bff; /* Blue for sent messages */
+  color: white;
+  border-bottom-right-radius: 5px; /* Differentiates sender bubble */
+}
+.chat-message.sent .message-timestamp {
+  color: #e0e0e0;
+}
+
+/* Received messages */
+.chat-message.received {
+  margin-right: auto; /* Align to the left */
+}
+.chat-message.received .message-bubble {
+  background-color: #e9ecef; /* Light grey for received messages */
+  color: #333;
+  border-bottom-left-radius: 5px; /* Differentiates receiver bubble */
+}
+.chat-message.received .message-timestamp {
+  color: #6c757d;
+}

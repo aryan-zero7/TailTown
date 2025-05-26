@@ -1,0 +1,83 @@
+/* src/pages/ChatListPage.css */
+.chat-list-page {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.chat-list-page h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.chat-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chat-list-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.chat-list-item:hover {
+  background-color: #f8f9fa;
+}
+
+.chat-list-item:last-child {
+  border-bottom: none;
+}
+
+.chat-item-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #007bff; /* Example color */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-right: 1rem;
+  text-transform: uppercase;
+}
+
+.chat-item-info {
+  flex-grow: 1;
+}
+
+.chat-item-name {
+  font-weight: 600;
+  color: #333;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.chat-item-last-message {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chat-item-timestamp {
+  font-size: 0.8rem;
+  color: #888;
+  margin-left: 1rem;
+  white-space: nowrap;
+}
+
+.error-message {
+  color: #d9534f;
+  text-align: center;
+}

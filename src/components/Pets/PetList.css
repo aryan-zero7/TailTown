@@ -1,0 +1,10 @@
+/* src/components/Pets/PetList.css */
+.pet-list {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(280px, 1fr)
+  ); /* Responsive grid */
+  gap: 1.5rem;
+  padding: 1rem 0;
+}

@@ -1,0 +1,72 @@
+/* src/components/Pets/CreatePetForm.css */
+/* You can reuse .auth-form styles or create specific ones */
+.create-pet-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.create-pet-form h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.create-pet-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.create-pet-form .form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.create-pet-form .form-group input,
+.create-pet-form .form-group select,
+.create-pet-form .form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.create-pet-form .form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.create-pet-form .submit-button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.create-pet-form .submit-button:hover {
+  background-color: #2980b9;
+}
+
+.create-pet-form .submit-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.create-pet-form .error-message {
+  color: #d9534f;
+  background-color: #f2dede;
+  border: 1px solid #ebccd1;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  text-align: center;
+}

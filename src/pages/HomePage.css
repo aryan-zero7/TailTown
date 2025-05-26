@@ -1,0 +1,84 @@
+/* src/pages/HomePage.css */
+.home-page {
+  text-align: center;
+}
+
+.home-hero {
+  background-color: #f4f7f6; /* Light, welcoming color */
+  padding: 4rem 2rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.home-hero h1 {
+  font-size: 2.8rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.home-hero p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.home-actions .btn {
+  padding: 0.8rem 1.5rem;
+  margin: 0 0.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #3498db; /* A friendly blue */
+  color: white;
+}
+.btn-primary:hover {
+  background-color: #2980b9;
+}
+
+.btn-secondary {
+  background-color: #e7e7e7;
+  color: #333;
+  border: 1px solid #ccc;
+}
+.btn-secondary:hover {
+  background-color: #d4d4d4;
+}
+
+.home-features {
+  padding: 3rem 2rem;
+}
+
+.home-features h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.feature-item {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.feature-item h3 {
+  font-size: 1.3rem;
+  color: #3498db;
+  margin-bottom: 0.5rem;
+}
+
+.feature-item p {
+  font-size: 1rem;
+  color: #666;
+}

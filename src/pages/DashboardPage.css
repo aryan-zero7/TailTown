@@ -1,0 +1,131 @@
+/* src/pages/DashboardPage.css */
+.dashboard-page {
+  padding: 2rem;
+  background-color: #f4f6f8; /* Lighter background for the page */
+  min-height: calc(100vh - 120px); /* Adjust based on navbar/footer height */
+}
+
+.dashboard-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.dashboard-header h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #2c3e50; /* Dark blue-grey */
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-header .welcome-name {
+  color: #3498db; /* Accent color for the name */
+  font-weight: 700;
+}
+
+.dashboard-header p {
+  font-size: 1.1rem;
+  color: #7f8c8d; /* Muted grey */
+}
+
+.dashboard-header .user-role {
+  display: inline-block;
+  background-color: #3498db;
+  color: white;
+  padding: 0.3em 0.8em;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.dashboard-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1.8rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.dashboard-card h3 {
+  font-size: 1.5rem;
+  color: #34495e; /* Slightly darker blue-grey */
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid #ecf0f1; /* Light separator */
+  padding-bottom: 0.8rem;
+}
+
+.dashboard-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dashboard-card li {
+  margin-bottom: 1rem;
+}
+
+.dashboard-card .action-link {
+  display: flex; /* For icon alignment if you add them */
+  align-items: center;
+  text-decoration: none;
+  color: #3498db; /* Primary action color */
+  font-weight: 500;
+  padding: 0.6rem 0.1rem; /* More clickable area */
+  border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dashboard-card .action-link:hover {
+  color: #2980b9; /* Darker shade on hover */
+  background-color: #f0f6ff; /* Subtle background on hover */
+}
+
+/* Simple text-based "icons" for demo - replace with SVG/Font Icons */
+.action-link::before {
+  margin-right: 0.6em;
+  font-weight: normal; /* So it doesn't inherit link's bold */
+  /* Examples - you'd use actual icon content here */
+}
+.action-link.create-listing::before {
+  content: "➕";
+}
+.action-link.search-pets::before {
+  content: "🔍";
+}
+.action-link.my-listings::before {
+  content: "🐾";
+}
+.action-link.manage-users::before {
+  content: "👥";
+}
+.action-link.manage-listings::before {
+  content: "📋";
+}
+
+.general-actions-card {
+  background-color: #e8f4fd; /* Slightly different background for emphasis */
+  border: 1px solid #cce3f6;
+}
+
+.general-actions-card h3 {
+  color: #2980b9;
+}
+
+.no-actions-message {
+  color: #7f8c8d;
+  font-style: italic;
+}

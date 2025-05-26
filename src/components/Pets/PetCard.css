@@ -1,0 +1,43 @@
+/* src/components/Pets/PetCard.css */
+.pet-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  background-color: #fff;
+}
+
+.pet-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.pet-card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.pet-card-image {
+  width: 100%;
+  height: 200px; /* Fixed height for consistency */
+  object-fit: cover; /* Cover ensures the image fills the space, cropping if necessary */
+  display: block;
+}
+
+.pet-card-info {
+  padding: 1rem;
+}
+
+.pet-card-info h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 1.25rem;
+}
+
+.pet-card-info p {
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+  color: #666;
+}

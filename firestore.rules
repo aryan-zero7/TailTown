@@ -1,0 +1,92 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper function for consistent chatId generation
+    function getChatId(uid1, uid2) {
+      // Rules assume uid1 and uid2 are strings. Client must ensure this.
+      return uid1 < uid2 ? uid1 + '_' + uid2 : uid2 + '_' + uid1;
+    }
+
+    // ============================================
+    // Users Collection ( /users/{userId} )
+    // ============================================
+    match /users/{userId} {
+      allow create: if request.auth != null && request.auth.uid == userId;
+      
+      // Any authenticated user can read any user document.
+      // Consider privacy implications for production.
+      allow read: if request.auth != null; 
+
+      allow update: if request.auth != null &&
+                       (request.auth.uid == userId ||
+                        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'Admin');
+      allow delete: if false;
+    }
+
+    // ============================================
+    // Pets Collection ( /pets/{petId} )
+    // ============================================
+    match /pets/{petId} {
+      allow read: if true;
+      allow create: if request.auth != null &&
+                       request.resource.data.sellerId == request.auth.uid &&
+                       (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'Seller' ||
+                        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'Admin');
+      allow update: if request.auth != null &&
+                       (resource.data.sellerId == request.auth.uid ||
+                        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'Admin');
+      allow delete: if request.auth != null &&
+                       (resource.data.sellerId == request.auth.uid ||
+                        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'Admin');
+    }
+
+    // ============================================
+    // Chats Collection ( /chats/{chatId} )
+    // ============================================
+    match /chats/{chatId} {
+      allow read: if request.auth != null;
+
+      allow create: if request.auth != null &&
+                       request.auth.uid in request.resource.data.participants &&
+                       request.resource.data.participants.size() == 2 &&
+                       request.resource.data.participants[0] != request.resource.data.participants[1] &&
+                       request.resource.data.participants[0] is string && 
+                       request.resource.data.participants[1] is string &&
+                       request.resource.data.participantInfo != null &&
+                       request.resource.data.participantInfo.keys().hasAll(request.resource.data.participants) &&
+                       request.resource.data.participantInfo.keys().size() == 2 &&
+                       request.resource.data.participantInfo[request.resource.data.participants[0]].name is string &&
+                       request.resource.data.participantInfo[request.resource.data.participants[0]].role is string &&
+                       request.resource.data.participantInfo[request.resource.data.participants[1]].name is string &&
+                       request.resource.data.participantInfo[request.resource.data.participants[1]].role is string &&
+                       chatId == getChatId(request.resource.data.participants[0], request.resource.data.participants[1]);
+
+      allow update: if request.auth != null && request.auth.uid in resource.data.participants; 
+      allow delete: if false;
+
+
+      // Messages Subcollection
+      match /messages/{messageId} {
+        allow read: if request.auth != null &&
+                       get(/databases/$(database)/documents/chats/$(chatId)).data.participants.hasAny([request.auth.uid]);
+        allow create: if request.auth != null &&
+                         request.resource.data.senderId == request.auth.uid &&
+                         get(/databases/$(database)/documents/chats/$(chatId)).data.participants.hasAny([request.auth.uid]) &&
+                         request.resource.data.text is string &&
+                         request.resource.data.text.size() > 0 && request.resource.data.text.size() < 1024 && 
+                         request.resource.data.receiverId is string &&
+                         request.resource.data.receiverId != request.auth.uid &&
+                         get(/databases/$(database)/documents/chats/$(chatId)).data.participants.hasAny([request.resource.data.receiverId]) &&
+                         request.resource.data.timestamp == request.time;
+        allow update: if request.auth != null &&
+                         resource.data.receiverId == request.auth.uid &&
+                         get(/databases/$(database)/documents/chats/$(chatId)).data.participants.hasAny([request.auth.uid]) &&
+                         request.resource.data.keys().hasOnly(['isRead']) &&
+                         request.resource.data.isRead is bool;
+        allow delete: if false;
+      }
+    }
+  }
+}

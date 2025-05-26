@@ -1,0 +1,130 @@
+/* src/pages/PetDetailPage.css */
+.pet-detail-page {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: #3498db;
+  text-decoration: none;
+  font-weight: bold;
+}
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.pet-detail-content {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column; /* Stack on small screens */
+}
+
+@media (min-width: 768px) {
+  .pet-detail-content {
+    flex-direction: row; /* Side by side on larger screens */
+  }
+}
+
+.pet-image-container {
+  flex: 1 1 40%; /* Grow, shrink, basis 40% */
+  max-width: 400px; /* Max image width */
+  margin: 0 auto; /* Center image on small screens */
+}
+
+.pet-detail-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
+.pet-info-container {
+  flex: 1 1 60%; /* Grow, shrink, basis 60% */
+}
+
+.pet-info-container h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.pet-info-container p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.pet-info-container p strong {
+  color: #333;
+}
+
+.status-available {
+  color: green;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.status-adopted {
+  color: red;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+/* Add other statuses as needed */
+
+.pet-description,
+.seller-info {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.pet-description h3,
+.seller-info h3 {
+  font-size: 1.3rem;
+  color: #3498db;
+  margin-bottom: 0.75rem;
+}
+
+.contact-seller-button {
+  display: inline-block;
+  background-color: #5cb85c;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.contact-seller-button:hover {
+  background-color: #4cae4c;
+}
+
+.error-message {
+  color: #d9534f;
+  background-color: #f2dede;
+  border: 1px solid #ebccd1;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Add to PetDetailPage.css or a general error style location */
+.error-message.chat-button-error {
+  margin-top: 0.5em;
+  font-size: 0.9em;
+}
+.info-text {
+  font-style: italic;
+  color: #555;
+  margin-top: 0.5em;
+}
